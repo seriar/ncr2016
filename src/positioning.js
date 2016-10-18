@@ -1,6 +1,7 @@
 var mqtt = require('mqtt');
 var tri = require('./trilateration');
 
+var positionTopic = "team1_position"
 
 // constants
 var TILE = 31 // cm
@@ -27,7 +28,7 @@ function beaconMacToPos(mac)
         case "57:D7":
             return {x: TILE*10, y: TILE*30, z: 247}
         case "B6:DB":
-            return {x: TILE*16, TILE*6, 5}
+            return {x: TILE*16, y: TILE*6, z: 5}
         case "8E:1D":
             return {x: TILE*18, y: TILE*21.66, z: 72}
         case "C6:1A":
@@ -40,7 +41,7 @@ function beaconMacToPos(mac)
 
 function rssiToDistance(x)
 {
-    var result = -0.0012381*x*x*x-0.0271429*x*x+2.19524*x+62
+    var result = -0.0889282*x*x*x-17.9773*x*x-1220.13*x-27597.3
     console.log(x + "->" + result)
     return result
 }

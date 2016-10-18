@@ -121,8 +121,18 @@ client.on('message', function (topic, message) {
     if (positions.length > 5)
     {
         // enough data, approximate positions
+        var position = approximatePosition(positions);
         console.log(approximatePosition(positions))
+        if(position != null)
+        {
+            var positionObject = {
+              "x" : position[0],
+              "y" : position[1],
+              "z" : position[2]
+            };
+            client.publish(positionTopic, JSON.stringify(positionObject));
+        }
+
         positions = []
     }
 })
-

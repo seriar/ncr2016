@@ -3,12 +3,13 @@ var tri = require('./trilateration');
 
 
 // constants
+var TILE = 31 // cm
 var xMinBound = 0;
-var xMaxBound = 1000; // cm
+var xMaxBound = 30 * TILE;
 var yMinBound = 0;
-var yMaxBound = 1000;
+var yMaxBound = 35 * TILE;
 var zMinBound = 0;
-var zMaxBound = 280;
+var zMaxBound = 300;
 
 function beaconMacToPos(mac)
 {
@@ -16,19 +17,26 @@ function beaconMacToPos(mac)
     {
         // x, y, z in centimeters
         case "11:76":
+            return {x: TILE*26, y: TILE*19, z: 230}
         case "7E:C4":
+            return {x: 0, y: TILE*25, z: 0}
         case "7D:B5":
+            return {x: 0, y: TILE*9, z: 0}
         case "6F:35":
+            return {x: 0, y: TILE*9, z: 256}
         case "57:D7":
-            return {x: 1, y: 1, z: 0}
+            return {x: TILE*10, y: TILE*30, z: 247}
         case "B6:DB":
+            return {x: TILE*16, TILE*6, 5}
         case "8E:1D":
+            return {x: TILE*18, y: TILE*21.66, z: 72}
         case "C6:1A":
-            return {x: 3, y: 4, z: 1}
+            return {x: 0, y: TILE*25, z: 241}
         default:
             return null
     }
 }
+
 
 function rssiToDistance(x)
 {

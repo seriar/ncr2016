@@ -1,0 +1,16 @@
+{
+  "name": "ncr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.coffee",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "keypress": "^0.2.1",
+    "mqtt": "^2.0.1",
+    "node-couchdb": "^1.1.0"
+  }
+}
